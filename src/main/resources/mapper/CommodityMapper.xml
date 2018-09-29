@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.springboot.dao.CommodityDao">
+    <resultMap id="BaseResultMap" type="org.springboot.domain.Commodity">
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="standard" property="standard" />
+        <result column="temperature" property="temperature" />
+        <result column="price" property="price" />
+        <result column="description" property="description" />
+    </resultMap>
+
+    <parameterMap id="Commodity" type="org.springboot.domain.Commodity"/>
+
+    <sql id="Base_Column_List">
+		id, name, standard, temperature, price, description
+	</sql>
+
+    <!--获取全部商品-->
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_commodity
+    </select>
+
+    <!--新增商品-->
+    <insert id="insertCommodity" parameterType="Commodity">
+        insert into t_commodity (name, standard, temperature, price, description)
+        values (#{name}, #{standard}, #{temperature}, #{price}, #{description})
+    </insert>
+
+    <!--修改商品-->
+    <update id="updateCommodity" parameterType="Commodity">
+		update t_commodity set
+		name = #{name}, standard = #{standard}, temperature = #{temperature}, price = #{price}, description = #{description}
+		where id = #{id}
+	</update>
+
+    <!--根据id获取商品-->
+    <select id="findById" resultMap="BaseResultMap" parameterType="int">
+        select
+        <include refid="Base_Column_List" />
+        from t_commodity where id = #{id}
+    </select>
+
+    <!--删除学生信息-->
+    <delete id="deleteById" parameterType="int">
+		delete from t_commodity where id = #{id}
+	</delete>
+</mapper>
