@@ -1,7 +1,6 @@
 package org.mall.service.impl;
 
 import org.mall.dao.CommodityDao;
-import org.mall.dao.CommodityDao;
 import org.mall.domain.Commodity;
 import org.mall.service.CommodityService;
 import org.springframework.beans.factory.annotation.Autowired;

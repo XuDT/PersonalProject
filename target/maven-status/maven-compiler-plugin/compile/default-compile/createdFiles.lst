@@ -1,0 +1,9 @@
+org\mall\domain\Commodity.class
+org\mall\service\impl\CommodityServiceImpl.class
+org\mall\dao\CommodityDao.class
+org\mall\MallApplication.class
+org\mall\common\ResultUtils.class
+org\mall\service\CommodityService.class
+org\mall\controller\CommodityController.class
+org\mall\SwaggerConfig.class
+org\mall\controller\VersionController.class

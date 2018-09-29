@@ -6,9 +6,11 @@ import com.alibaba.fastjson.JSON;
 * 结果类
 * */
 public class ResultUtils {
-
+    //返回结果true：成功，false：失败
     private boolean success = true;
+    //返回信息
     private String msg;
+    //返回结果集
     private Object result;
 
     public void setSuccess(boolean success) {
@@ -48,10 +50,9 @@ public class ResultUtils {
     public boolean isSuccess() {
         return success;
     }
-
-    /**
-     * 返回成功
-     */
+    /*
+     * 返回成功结果
+     * */
     public Object successResult(){
         ResultUtils resultUtils = new ResultUtils();
         resultUtils.setSuccess(true);
@@ -59,9 +60,9 @@ public class ResultUtils {
         resultUtils.setResult(null);
         return JSON.toJSON(resultUtils);
     }
-    /**
-     * 返回成功
-     */
+    /*
+     * 返回成功结果
+     * */
     public Object successResult(Object obj){
         //判断参数obj是否是String类型
         if (obj instanceof String){
@@ -71,9 +72,9 @@ public class ResultUtils {
         }
     }
 
-    /**
-     *返回成功
-     */
+    /*
+     * 返回成功结果
+     * */
     public Object successResult(Object obj, String msg){
         ResultUtils resultUtils = new ResultUtils();
         resultUtils.setSuccess(true);
@@ -81,9 +82,9 @@ public class ResultUtils {
         resultUtils.setResult(obj);
         return JSON.toJSON(resultUtils);
     }
-    /**
-     * 返回错误
-     */
+    /*
+     * 返回错误结果
+     * */
     public Object errorResult(){
         ResultUtils resultUtils = new ResultUtils();
         resultUtils.setSuccess(false);
@@ -91,10 +92,9 @@ public class ResultUtils {
         resultUtils.setResult(null);
         return JSON.toJSON(resultUtils);
     }
-
-    /**
-     * 返回错误
-     */
+    /*
+     * 返回错误结果
+     * */
     public Object errorResult(Object obj){
         if (obj instanceof String){
             return renderJsonError(null, (String) obj);
@@ -102,10 +102,9 @@ public class ResultUtils {
             return renderJsonError(obj, "error");
         }
     }
-
-    /**
-     * 返回错误
-     */
+    /*
+     * 返回错误结果
+     * */
     public Object renderJsonError(Object obj, String msg){
         ResultUtils resultUtils = new ResultUtils();
         resultUtils.setSuccess(false);
